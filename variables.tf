@@ -3,10 +3,6 @@ variable "instance_type" {
   default     = "t3.nano"
 }
 
-data "aws_ami" "app_ami" {
-  most_recent = true
-}
-
 variable "ami_filter" {
   description = "Name filter and owner for AMI"
 
@@ -19,10 +15,6 @@ variable "ami_filter" {
   name = "bitnami-tomcat-*-x86_64-hvm-ebs-nami"
   owner = "979382823631" # Bitnami
   }
-}
-
-data "aws_vpc" "default" {
-  default = true
 }
 
 variable "environment" {
@@ -46,5 +38,5 @@ variable "min_size" {
 
 variable "max_size" {
   description = "Maximum num instances for ASG"
-  max_size = 2
+  default = 2
 }
